@@ -1,0 +1,14 @@
+<%= form_with(model: post) do |f| %>
+  
+  <div class="form-input">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: 'form-control', placeholder: "example:Cassandea Rice"%>
+  </div>
+
+    <div class="form-input">
+    <%= f.label :body %>
+    <%= f.rich_text_area :body, class:'form-control' %>
+  </div>
+
+  <%= link_to 'Add Post', root_path, class:'' %>
+<% end %>
