@@ -1,0 +1,15 @@
+<h1>Hello and Welcome</h1>
+
+<div id="post-<%= @posts.id %>">
+</div>
+
+
+<% if @posts.any? %>
+  <%# <%= render @posts %> 
+  <%= render partial: "post", collection: @posts %>
+<% else %>
+  <p>No posts to display message</p>
+<% end %>
+<br>
+<br>
+<%= button_to "Create Post", '/posts/new', method: :get %>

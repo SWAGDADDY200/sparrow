@@ -1,5 +1,13 @@
-<%= form_with(model: post) do |f| %>
-  
+<%= form_with(model: post ) do |f| %>
+
+    <%  if post.errors %>
+        <div class="alert alert-danger">
+            <% post.errors.full_messages.each do |message|%>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+    
   <div class="form-input">
     <%= f.label :author %>
     <%= f.text_field :author, class: 'form-control', placeholder: "example:Cassandea Rice"%>
@@ -10,5 +18,10 @@
     <%= f.rich_text_area :body, class:'form-control' %>
   </div>
 
-  <%= link_to 'Add Post', root_path, class:'' %>
+  <%= f.submit 'Add Post' %>
 <% end %>
+<br>
+<br>
+<%= button_to "HOME", '/', method: :get %>
+
+
