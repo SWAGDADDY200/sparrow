@@ -3,3 +3,7 @@ class Post < ApplicationRecord
   validates :body, length: { minimum: 1, maximum: 300 }
   validates :author, presence: true
 end
+
+def published?
+  post_id?
+end
