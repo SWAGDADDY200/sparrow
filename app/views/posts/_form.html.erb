@@ -18,6 +18,10 @@
     <%= f.rich_text_area :body, class:'form-control' %>
   </div>
 
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image, multiple: true %>
+
   <%= f.submit 'Add Post' %>
 <% end %>
 <br>

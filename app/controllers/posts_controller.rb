@@ -2,13 +2,12 @@
 
 class PostsController < ApplicationController
   def create
-    @post = Post.new(posts_params)
+    @post = Post.new(post_params)
     if @post.save
       redirect_to posts_path, notice: "Post was successfully created"
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def new
@@ -24,13 +23,12 @@ class PostsController < ApplicationController
   # end
   def update
     @post = Post.find(params[:id])
-    @post = Post.update(posts_params)
-    redirect_to root_path
-    # if Post.new.present?
-    #   redirect_to posts_path, notice: "Post was successfully created"
-    # else
-    #   redricet_to root_path, notice: "Error creating post"
-    # end
+
+    if @post.update(post_params)
+      redirect_to @post, notice: "Post was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def author
@@ -49,7 +47,7 @@ class PostsController < ApplicationController
   end
   private
 
-  def posts_params
-    params.require(:post).permit(:author, :body)
+  def post_params
+    params.require(:post).permit(:author, :body, image: [])
   end
 end
