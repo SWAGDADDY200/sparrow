@@ -31,9 +31,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def author
-    @posts = Post.find
-  end
+
 
   def show
   end

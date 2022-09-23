@@ -8,12 +8,13 @@
         </div>
     <% end %>
     
-  <div class="form-input">
+  
+  <div class="form-input mb-3">
     <%= f.label :author %>
-    <%= f.text_field :author, class: 'form-control', placeholder: "example:Cassandea Rice"%>
+    <%= f.text_field :author, class: 'text-center', placeholder: "example:Juliet Rice"%>
   </div>
 
-    <div class="form-input">
+    <div class="form-input mb-3">
     <%= f.label :body %>
     <%= f.rich_text_area :body, class:'form-control' %>
   </div>
@@ -22,7 +23,9 @@
   <%= f.label :image %>
   <%= f.file_field :image, multiple: true %>
 
-  <%= f.submit 'Add Post' %>
+  <div class='mb-3 mt-4p'>
+    <%= f.submit 'Add Post' %>
+  </div>
 <% end %>
 <br>
 <br>

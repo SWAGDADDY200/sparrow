@@ -1,5 +1,7 @@
 
-<h1>Hello and Welcome</h1>
+<h1 class="fs-1 text-center shadow-lg p-3 mb-6 bg-body rounded text-dark fw-bold">Welcome to SPARROW</h1>
+<br>
+<br>
 <% if @posts.any? %>
   <%# <%= render @posts %> 
   <%= render partial: "post", collection: @posts %>
@@ -9,5 +11,7 @@
 <br>
 <br>
 <br>
-<br>
-<%= button_to "Create Post", '/posts/new', method: :get %>
+<br> 
+<div class='mb-3'>
+<%= button_to "Create Post", '/posts/new', method: :get, class: 'btn btn-outline-dark' %>
+</div>

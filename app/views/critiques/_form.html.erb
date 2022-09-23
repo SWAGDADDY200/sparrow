@@ -1,0 +1,19 @@
+<%= form_with(model: critique, url: post_critiques_path(critique.post)) do |i| %>
+
+  <div class="form-input">
+    <%= i.label :name %>
+    <%= i.text_field :name, class: 'form-control', placeholder: "example:Cassandea Rice"%>
+  </div>
+
+
+  <div class="form-input">
+    <%= i.label :comment %>
+    <%= i.rich_text_area :comment, class: 'form-control', placeholder: "Write a comment"%>
+
+    <%= i.submit 'Add Comment' %>
+  </div>
+<% end %>
+  <br>
+  <br>
+  <br>
+  <%= button_to "HOME", '/', method: :get, class: 'mb-5' %>
