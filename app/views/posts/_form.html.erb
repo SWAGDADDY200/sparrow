@@ -1,18 +1,16 @@
 <%= form_with(model: post ) do |f| %>
-
-    <%  if post.errors %>
-        <div class="alert alert-danger">
-            <% post.errors.full_messages.each do |message|%>
-                <div><%= message %></div>
-            <% end %>
-        </div>
-    <% end %>
-    
-  
+  <% if post.errors.any? %>
+    <div class="alert alert-danger">
+      <% post.errors.full_messages.each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+<%# 
   <div class="form-input mb-3">
     <%= f.label :author %>
-    <%= f.text_field :author, class: 'text-center', placeholder: "example:Juliet Rice"%>
-  </div>
+    <%# <%= f.text_field :author, class: 'text-center', placeholder: "example:Juliet Rice" %> 
+  <%# </div> %> 
 
     <div class="form-input mb-3">
     <%= f.label :body %>
@@ -29,6 +27,6 @@
 <% end %>
 <br>
 <br>
-<%= button_to "HOME", '/', method: :get %>
+
 
 

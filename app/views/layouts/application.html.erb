@@ -11,13 +11,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
-    <div class='bg-secondary bg-gradient text-white'>
+  <body class='bg-secondary text-black'>
+    <div>
+      <div class='mb-3 text-center'>
+      <% if current_user %>
+        <%= button_to "Create Post", '/posts/new', method: :get, class: 'btn btn-outline-dark' %>
+      <% end %>
+      </div>
           <div class="d-flex justify-content-between my-3">
             <% if current_user %>
-              <%= current_user.name %>
+              Logged in as:<h1 class=''><%= current_user.name %></h1>
 
-            
               <%= button_to "LOGOUT?", logout_path, method: :delete, class: 'btn btn-outline-danger' %>
             <% else %>
               <%= button_to 'LOG IN', login_path, method: :get, class: 'btn btn-outline-light' %>
@@ -31,6 +35,7 @@
             <%= yield %>
           </div>
         </div>
+          <%= button_to "HOME", '/', method: :get %>
       </div>
     </div>
   </body>

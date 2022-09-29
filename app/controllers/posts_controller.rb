@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_author, only: [:edit, :update, :destroy]
+  before_action :require_user_login, except: [:show, :index]
+
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
+
     if @post.save
       redirect_to posts_path, notice: "Post was successfully created"
     else
@@ -11,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def index
@@ -22,7 +27,7 @@ class PostsController < ApplicationController
   #   @posts = Post.find(params[:id])
   # end
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if @post.update(post_params)
       redirect_to @post, notice: "Post was successfully updated."
@@ -37,18 +42,35 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     flash[:success] = 'Post was successfully destroyed!'
     redirect_to root_path
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
+
+  def require_user_login
+    if current_user.nil?
+      flash[:notice] = "YOU MUST BE LOGGED IN"
+      redirect_to login_path
+    end
+  end
+
   private
 
-  def post_params
-    params.require(:post).permit(:author, :body, image: [])
+  def set_post
+    @post = Post.find(params[:id])
   end
+  
+  def require_author
+    redirect_to(root_path) unless @post.user == current_user
+  end
+
+  def post_params
+    params.require(:post).permit(:body, image: [])
+  end
+
 end

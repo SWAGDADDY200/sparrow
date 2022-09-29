@@ -1,36 +1,44 @@
-<div id="post-<%= post.id %>">
-  <div class="card-body">
-    <h1 class="fs-3 ">Author:<%= post.author %> </h1>
-    <p class="post"> Description: <%= post.body %></p>
-  </div>
-</div>
+<div class='card'>
+  <div class='card-body'>
+  
+    <%# <div id="post<%= post.id %>
+    <div class='class m-auto'>
+      <div class="card-body">
+        <h1 class="fs-3">Author: <%= post.user.name %> </h1>
+        <p class="post"> Description: <%= post.body %></p>
+      </div>
+    </div>
 
-<div>
-  <% post.image.each do |image| %>
-    <%= image_tag image, :size => "300x200" %>
-  <% end %>
-</div>
-  <div class='card'>
-    <div class ="card-body bg-secondary bg-gradient ">
-       <p class='text-uppercase '>Comments:</p>
-      <% post.critiques.each do |critique| %>    
-        <h2 class='fs-5'> <%= critique.name %> </h2>
-        <p class='fs-6'><%== critique.comment %></p>
+    <div>
+      <% post.image.each do |image| %>
+        <%= image_tag image, :size => "400x300" %>
       <% end %>
     </div>
+
+      <%# <div class='card mb-3'>
+        <div class ="card-body bg-secondary"> %>
+          <p class='text-uppercase'>Comments:</p>
+          <% post.critiques.each do |critique| %>    
+            <h2 class='fs-5'> <%= critique.name %> </h2>
+            <p class='fs-6'><%== critique.comment %></p>
+          <% end %>
+        <%# </div>
+      </div> %>
+
+
+      <% if post.body %>
+        <%# <%= link_to "Delete Post", post_path(post), "data-turbo-method": :delete %>
+        <%# <%= link_to "Edit Post", edit_post_path(post) %>
+        <%# <%= link_to "Comment", new_post_critique_path(post) %>
+        <div class="d-flex justify-content-between my-3">
+          <%= button_to "DELETE POST", post_path(post), method: :delete, class: 'btn btn-outline-danger' %>
+          <%= button_to "EDIT POST", edit_post_path(post), method: :get, class: "btn btn-outline-warning" %>
+          <%= button_to "COMMENT", new_post_critique_path(post), method: :get, class: "btn btn-outline-info" %>
+        </div>
+      <% end %>
+    
+
+
+
   </div>
-
-
-  <% if post.body %>
-    <%# <%= link_to "Delete Post", post_path(post), "data-turbo-method": :delete %>
-    <%# <%= link_to "Edit Post", edit_post_path(post) %>
-    <%# <%= link_to "Comment", new_post_critique_path(post) %>
-    <div class="d-flex justify-content-between my-3">
-      <%= button_to "DELETE POST", post_path(post), method: :delete, class: 'btn btn-outline-danger' %>
-      <%= button_to "EDIT POST", edit_post_path(post), method: :get, class: "btn btn-outline-warning" %>
-      <%= button_to "COMMENT", new_post_critique_path(post), method: :get, class: "btn btn-outline-info" %>
-    </div>
-  <% end %>
 </div>
-
-
