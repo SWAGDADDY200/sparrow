@@ -17,11 +17,21 @@
 
       <%# <div class='card mb-3'>
         <div class ="card-body bg-secondary"> %>
+        <% if  post.critiques.any? %>
+          
           <p class='text-uppercase'>Comments:</p>
-          <% post.critiques.each do |critique| %>    
-            <h2 class='fs-5'> <%= critique.name %> </h2>
+          <% post.critiques.each do |critique| %>   
+            <h2 class='fs-5'> <%= critique.user.name   %> </h2>
             <p class='fs-6'><%== critique.comment %></p>
           <% end %>
+          
+        <% else %>
+
+          <p class='text-uppercase'>Comments:</p>
+          <p>No comment here as yet, but you can add one</p>
+
+
+        <% end %>
         <%# </div>
       </div> %>
 

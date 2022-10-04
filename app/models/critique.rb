@@ -1,4 +1,6 @@
 class Critique < ApplicationRecord
   belongs_to :post
-  validates :name, presence: true
+  belongs_to :user
+
+  validates :comment, length: { minimum: 1, maximum: 300 }
 end
