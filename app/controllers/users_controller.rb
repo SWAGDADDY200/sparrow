@@ -17,16 +17,26 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user = User.find(params[:id])
+    if current_user.update(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def delete
 
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
+    params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end

@@ -3,6 +3,10 @@
   <div class="form-input">
     <%= i.label :comment %>
     <%= i.rich_text_area :comment, class: 'form-control', placeholder: "Write a comment"%>
+    <div class='mb-3 fw-bold mt-3 row'>
+      <%= i.label :rating %>
+      <%= i.collection_radio_buttons :rating, (1..5), :to_i, :to_i, class: 'form-control ', placeholder: "Must be between 1-10" %>
+    </div>
 
     <%= i.submit 'Add Comment' %>
   </div>

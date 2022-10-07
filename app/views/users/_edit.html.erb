@@ -1,0 +1,18 @@
+<%= form_with(model: @user ) do |q| %>
+
+  <%= q.label :name %>
+  <%= q.text_field :name, class: 'form-control' %>
+
+  <%= q.label :email %>
+  <%= q.email_field :email, class: 'form-control' %>
+
+  <%= q.label :password %>
+  <%= q.password_field :password, class: 'form-control' %>
+
+  <%= q.label :password_confirmation, "Confirmation" %>
+  <%= q.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= q.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
+
+
