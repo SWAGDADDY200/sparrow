@@ -21,13 +21,13 @@
       <% end %>
       </div>
 
-          <div class="bg d-flex justify-content-between my-2 text-center shadow-lg p-3 mb-6 text-white">
+          <div class="bg d-flex justify-content-between my-2 text-center shadow-lg p-3 mb-6 text-white text-white bg-black mb-5 p border border-info shadow-lg p-3 mb-5 bg-black rounded">
             <% if current_user %>
               <h1 class=''><%= current_user.name %></h1>
 
               <% if current_user.image.attached? %>
 
-                <%= image_tag(current_user.image, class: 'img-fluid img-avatar')%>
+                <%= image_tag(current_user.image, class: 'img-fluid img-avatar rounded-circle')%>
 
               <% end %>
 
@@ -52,7 +52,7 @@
             <%= yield %>
           </div>
         </div>
-          <%= button_to "HOME", '/', method: :get, class: 'mt-5 mb-9 position-absolute top-600 start-50 translate-middle' %>
+          <%= button_to "HOME", '/', method: :get, class: 'mt-5 mb-9 position-absolute top-600 start-50 translate-middle ' %>
       </div>
     </div>
   </body>

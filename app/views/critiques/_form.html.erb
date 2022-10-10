@@ -8,10 +8,6 @@
       <%= i.collection_radio_buttons :rating, (1..5), :to_i, :to_i, class: 'form-control ', placeholder: "Must be between 1-10" %>
     </div>
 
-    <%= i.submit 'Add Comment' %>
+    <%= i.submit 'Add Comment', class:'btn btn-outline-success' %>
   </div>
 <% end %>
-  <br>
-  <br>
-  <br>
-  <%= button_to "HOME", '/', method: :get, class: 'mb-5' %>

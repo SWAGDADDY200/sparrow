@@ -1,4 +1,4 @@
-<div class='card'>
+<div class='card border border-dark border-5'>
   <div class='card-body'>
   
     <%# <div id="post<%= post.id %>
@@ -8,7 +8,7 @@
         <h1 class="fs-2 fw-bold">
           Author: <%= post.user.name %>    
           <% if post.user.image.attached? %>          
-            <%= image_tag(post.user.image, class: 'img-fluid img-avatar img-circled') %>
+            <%= image_tag(post.user.image, class: 'img-fluid img-avatar img-circled rounded-circle') %>
           <% end %>          
         </h1>
         <p class="post fs-4"> Description: <%= post.body %></p>

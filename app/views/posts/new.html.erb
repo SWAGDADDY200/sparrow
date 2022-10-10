@@ -1,9 +1,11 @@
+<div class='text-black text-center bg-white mb-5 py-3 px-3 border border-primary border-2 shadow-lg p-3 mb-5 bg-black rounded'>
+  <h1>New Post</h1>
 
-<h1>New Post</h1>
+  <% if current_user %>
 
-<% if current_user %>
+    <%= render partial: 'form', locals: { post: @post } %>
+  <% else %>
+    <h1>NEED TO BE SIGNED IN TO CREATE POST!! </h1>
+  <% end %>
 
-  <%= render partial: 'form', locals: { post: @post } %>
-<% else %>
-  <h1>NEED TO BE SIGNED IN TO CREATE POST!! </h1>
-<% end %>
+</div>

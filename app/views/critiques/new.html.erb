@@ -1,3 +1,6 @@
-<h1>Comment for <%= @post.user.name %> post</h1>
+
+<div class='text-black bg-white mb-5 py-5 px-5 border border-dark border-2 shadow-lg p-3 mb-5 bg-black rounded text-center'>
+  <h1>Comment for <%= @post.user.name %> post</h1>
 
   <%= render partial: 'form', locals: { critique: @critique } %>
+</div>
