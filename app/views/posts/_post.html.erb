@@ -3,17 +3,23 @@
   
     <%# <div id="post<%= post.id %>
     <div class='class m-auto'>
+    <%= flash[:info]%>
       <div class="card-body">
-        <h1 class="fs-2 fw-bold">Author: <%= post.user.name %> </h1>
+        <h1 class="fs-2 fw-bold">
+          Author: <%= post.user.name %>    
+          <% if post.user.image.attached? %>          
+            <%= image_tag(post.user.image, class: 'img-fluid img-avatar img-circled') %>
+          <% end %>          
+        </h1>
         <p class="post fs-4"> Description: <%= post.body %></p>
       </div>
     </div>
 
     <div>
-      <% post.image.each do |image| %>
-        <%= image_tag image, :size => "400x300" %>
-      <% end %>
-    </div>
+    <% post.images.each do |image| %>
+      <%= image_tag image, style:'width:200px; height:300px' %>
+    <% end %>
+  </div>
 
       <%# <div class='card mb-3'>
         <div class ="card-body bg-secondary"> %>
@@ -21,7 +27,7 @@
           
           <p class='text-uppercase'>Comments:</p>
           <% post.critiques.each do |critique| %>   
-            <h2 class='fs-5 fw-bold'> <%= critique.user.name   %> </h2>
+            <h2 class='fs-5 fw-bold'> <%= critique.user.name %> </h2>
             <p class='fs-6'><%== critique.comment %></p>
             <p class=' fs-5'><%= critique.user.name %></p><p class='fs-6 text-success fw-bold'>Gave this a rating of <%= critique.rating%> out of 5</p>
           <% end %>
@@ -46,6 +52,7 @@
           <%= button_to "EDIT POST", edit_post_path(post), method: :get, class: "btn btn-outline-warning" %>
           <%= button_to "COMMENT", new_post_critique_path(post), method: :get, class: "btn btn-outline-info" %>
         </div>
+
       <% end %>
   </div>
 </div>

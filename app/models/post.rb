@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   
   has_rich_text :body
-  has_many_attached :image
+  has_many_attached :images
   has_many :critiques, dependent: :destroy
   has_one :rating
 

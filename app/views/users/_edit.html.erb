@@ -1,4 +1,8 @@
 <%= form_with(model: @user ) do |q| %>
+  <div class="field mt-5">
+    <%= q.label :image %>
+    <%= q.file_field :image %>
+  </div>
 
   <%= q.label :name %>
   <%= q.text_field :name, class: 'form-control' %>
